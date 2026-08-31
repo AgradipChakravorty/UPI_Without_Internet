@@ -64,12 +64,12 @@ Includes an in-memory software simulator of the mesh network and an interactive 
 
 ## Core Engineering Challenges Solved
 
-### **Problem 1: Untrusted Intermediaries (Data Privacy & Integrity)**
+### **Problem 1: Data Privacy & Integrity**
 Peer devices carry encrypted transactions. To prevent reading or altering payloads:
 * **Hybrid Cryptography:** Payment data is encrypted using AES-256-GCM. The ephemeral AES key is wrapped using the server's RSA-2048 public key.
 * **Authenticated Encryption:** AES-GCM attaches a 16-byte authentication tag. Any single-bit modification by an intermediate node invalidates the tag, triggering immediate rejection.
 
-### **Problem 2: The Duplicate-Storm (Preventing Double-Spending)**
+### **Problem 2: Preventing Double Spending**
 When multiple bridge devices hold identical packets and reconnect to 4G simultaneously:
 * **Atomic SHA-256 Deduplication:** Computes `SHA-256(ciphertext)` before running expensive RSA decryption operations.
 * **ConcurrentHashMap `putIfAbsent` (SETNX Pattern):** Guarantees that only the first thread claiming a hash proceeds to settlement; concurrent duplicates return `DUPLICATE_DROPPED`.
