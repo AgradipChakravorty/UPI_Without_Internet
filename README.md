@@ -8,6 +8,13 @@ A Spring Boot backend engineered to process offline UPI payments routed through 
 
 Includes an in-memory software simulator of the mesh network and an interactive web dashboard to demonstrate end-to-end multi-hop routing, cryptographic verification, and idempotent ledger processing.
 
+
+WORKING PROJECT DEMO VIDEO -
+
+https://github.com/user-attachments/assets/b445f83b-2583-4c6d-8122-0452f615df76
+
+
+
 ---
 
 ## Technical Architecture
